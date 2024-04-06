@@ -28,10 +28,6 @@ public class AutomaticBroadcast extends JavaPlugin {
     private File broadcastsFile;
     private FileConfiguration broadcastsConfig;
     // Generates the broadcast-toggles.yml file //
-    private File togglesFile;
-    private FileConfiguration togglesConfig;
-
-    // Attributes //
     private static AutomaticBroadcast plugin;
     private ConfigManager configManager;
     private BroadcastManager broadcastManager;
@@ -52,7 +48,7 @@ public class AutomaticBroadcast extends JavaPlugin {
         // Configurations initialization //
         saveDefaultConfigurations();
         loadConfigurations();
-        configManager = new ConfigManager(getConfig(), broadcastsConfig, togglesConfig);
+        configManager = new ConfigManager(getConfig(), broadcastsConfig);
 
         // Changes the manager with a new one (because the configurations might have changed) //
         broadcastManager = new BroadcastManager(createBroadcastList());
@@ -73,14 +69,6 @@ public class AutomaticBroadcast extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("");
     }
 
-    // Saves the online players' toggle status on disabled of the plugin //
-    @Override
-    public void onDisable() {
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            broadcastToggle.saveBroadcastToggle(player);
-        }
-    }
-
     // Saves the default configuration files (creates them in the case that they don't already exist) //
     private void saveDefaultConfigurations() {
         this.saveDefaultConfig();
@@ -88,32 +76,12 @@ public class AutomaticBroadcast extends JavaPlugin {
         if (!broadcastsFile.exists())
             saveResource("broadcasts.yml", false);
         broadcastsConfig = new YamlConfiguration();
-
-        togglesFile = new File(getDataFolder(), "broadcast-toggles.yml");
-        if (!togglesFile.exists())
-            saveResource("broadcast-toggles.yml", false);
-        togglesConfig = new YamlConfiguration();
-    }
-
-    // Saves the broadcast-toggles.yml file //
-    public void saveBroadcastToggles() {
-        try {
-            togglesConfig.save(togglesFile);
-        } catch (Exception exception) {
-            System.out.println(exception);
-        }
     }
 
     // Tries to load the broadcasts.yml and broadcast-toggles.yml files //
     private void loadConfigurations() {
         try {
             broadcastsConfig.load(broadcastsFile);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            togglesConfig.load(togglesFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -157,10 +125,9 @@ public class AutomaticBroadcast extends JavaPlugin {
         plugin.reloadConfig();
         // Replaces the messages data by the ones from the file //
         broadcastsConfig = YamlConfiguration.loadConfiguration(broadcastsFile);
-        togglesConfig = YamlConfiguration.loadConfiguration(togglesFile);
 
         // Replaces the commands and attributes //
-        configManager = new ConfigManager(getConfig(), broadcastsConfig, togglesConfig);
+        configManager = new ConfigManager(getConfig(), broadcastsConfig);
         broadcastManager = new BroadcastManager(createBroadcastList());
         broadcastToggle = new BroadcastToggle(configManager);
         getCommandsAndListeners();

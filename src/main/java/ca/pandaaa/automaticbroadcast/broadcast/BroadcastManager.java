@@ -102,15 +102,4 @@ public class BroadcastManager implements Listener {
         return players;
     }
 
-    // Restores the player's toggle status on join event. //
-    @EventHandler
-    public void onJoinEvent(PlayerJoinEvent event) {
-        plugin.getBroadcastToggle().restoreBroadcastToggle(event.getPlayer());
-    }
-
-    // Saves the player's toggle status on quit event. //
-    @EventHandler
-    public void onLeaveEvent(PlayerQuitEvent event) {
-        plugin.getBroadcastToggle().saveBroadcastToggle(event.getPlayer());
-    }
 }

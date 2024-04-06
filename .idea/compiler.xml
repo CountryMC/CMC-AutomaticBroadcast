@@ -9,8 +9,5 @@
         <module name="AutomaticBroadcast" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="AutomaticBroadcast" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

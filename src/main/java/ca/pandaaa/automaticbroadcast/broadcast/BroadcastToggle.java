@@ -16,9 +16,6 @@ public class BroadcastToggle {
 
     public BroadcastToggle(ConfigManager config) {
         this.config = config;
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            restoreBroadcastToggle(player);
-        }
     }
 
     public void togglePlayerBroadcast(Player player, String type) {
@@ -39,14 +36,5 @@ public class BroadcastToggle {
             broadcastToggle.put(player.getUniqueId(), true);
 
         return broadcastToggle.get(player.getUniqueId());
-    }
-
-    public void saveBroadcastToggle(Player player) {
-        config.setPlayerToggle(player, broadcastToggle.get(player.getUniqueId()));
-        AutomaticBroadcast.getPlugin().saveBroadcastToggles();
-    }
-
-    public void restoreBroadcastToggle(Player player) {
-        broadcastToggle.put(player.getUniqueId(), config.getPlayerToggle(player));
     }
 }

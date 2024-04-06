@@ -11,13 +11,11 @@ public class ConfigManager {
     // Attributes //
     private final FileConfiguration configuration;
     private final FileConfiguration broadcasts;
-    private final FileConfiguration toggles;
 
     // Constructor //
-    public ConfigManager(FileConfiguration configuration, FileConfiguration broadcasts, FileConfiguration toggles) {
+    public ConfigManager(FileConfiguration configuration, FileConfiguration broadcasts) {
         this.configuration = configuration;
         this.broadcasts = broadcasts;
-        this.toggles = toggles;
     }
 
     // Returns the time between every broadcast (in ticks.. 20 ticks is 1 sec) //
@@ -100,15 +98,5 @@ public class ConfigManager {
         } catch(Exception exception) {
             return null;
         }
-    }
-
-    public void setPlayerToggle(Player player, boolean toggle) {
-        toggles.set(player.getUniqueId() + ".toggled", toggle);
-    }
-
-    public boolean getPlayerToggle(Player player) {
-        if(!toggles.getKeys(false).contains(player.getUniqueId().toString()))
-            return true;
-        return toggles.getBoolean(player.getUniqueId() + ".toggled");
     }
 }
