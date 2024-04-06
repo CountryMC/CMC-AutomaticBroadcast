@@ -1,43 +1,71 @@
-# Use this document to configure the settings of your AutomaticBroadcast Plugin.
+# Use this document to configure the messages of your AutomaticBroadcast Plugin.
 # If you require any assistance with the plugin, please contact me on discord (https://discord.io/AnimalPlugins).
-#   _____         ___ _                 _   _
-#  |     |___ ___|  _|_|___ _ _ ___ ___| |_|_|___ ___
-#  |   --| . |   |  _| | . | | |  _| .'|  _| | . |   |
-#  |_____|___|_|_|_| |_|_  |___|_| |__,|_| |_|___|_|_|
-#                      |___|
+#   _____     _                 _   _     _____               _             _
+#  |  _  |_ _| |_ ___ _____ ___| |_|_|___| __  |___ ___ ___ _| |___ ___ ___| |_
+#  |     | | |  _| . |     | .'|  _| |  _| __ -|  _| . | .'| . |  _| .'|_ -|  _|
+#  |__|__|___|_| |___|_|_|_|__,|_| |_|___|_____|_| |___|__,|___|___|__,|___|_|
+#
+# Placeholders:
+# Use '&' to use the basic minecraft color code.
+# The plugin also supports hex colors : '&#123456'
+# To create color gradients, you can use : https://rgb.birdflop.com/
+# >> -> Changes automatically to the double arrow character.
+# AutomaticBroadcast also supports PlaceHolderAPI placeholders (make sure the extension(s) you need are downloaded!)
+# Please refer to PAPI's wiki : https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders
 
-# The time between each message (seconds).
-time-between-messages: 1145
-
-# Should the messages be sent in order or randomly?
-# (The same message will never appear twice in a row)
-random: false
-
-# Should the automaticbroadcast.exempt permission be enabled?
-# (Players with this permission will not receive the broadcasts if this option is enabled)
-exempt-permission: false
-
-# A list of worlds in which broadcasts will not be sent to the players.
-disabled-worlds:
-  - disabled-world
-  - disabled-world2
-
-# A list of players that will not see the broadcasts.
-exempted-players:
-  - exempted-player1
-  - exempted-player2
-
-# The message displayed when the command provided is invalid.
-unknown-command: "&c&l[!] &cUnknown Command."
-
-# The message displayed when the sender of the command does not have the permission to execute the command.
-no-permission: "&c&l[!] &cYou do not have enough permission to do this."
-
-# The message displayed when the configuration of the plugin is reloaded.
-plugin-reload: "&3&lAuto&b&lmatic&8&lBroad&7&lcast &7&l>> &bPlugin Reloaded."
-
-# The message sent to the sender of the "/automaticbroadcast toggle" (on) command.
-toggle-on-message: "&3&lAuto&b&lmatic&8&lBroad&7&lcast &7&l>> &bBroadcasts &aenabled&b."
-
-# The message sent to the sender of the "/automaticbroadcast toggle" (off) command.
-toggle-off-message: "&3&lAuto&b&lmatic&8&lBroad&7&lcast &7&l>> &bBroadcasts &cdisabled&b."
+# The broadcasts that will be displayed automatically.
+broadcasts:
+  # The name of the broadcast, basically a key word to know which broadcast is which (does not change anything in-game).
+  # Make sure every broadcast has a different name (no duplicates!)
+  donate:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fЗаглядывай в донат услуги - &#42f5ad/donate"
+      - "     &fПокупка на сайте - &#42f5adCountryMC.net"
+      - ""
+    click: "/donate"
+    hover:
+      - "&7Нажми на сообщение;)"
+  earn:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fУзнай как зарабатывать - &#42f5ad/earn"
+      - ""
+    click: "/earn"
+    hover:
+      - "&7Нажми на сообщение;)"
+  shop:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fТрать монеты и кантрикоины в магазине - &#42f5ad/shop"
+      - ""
+    click: "/shop"
+    hover:
+      - "&7Нажми на сообщение;)"
+  social:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fНаши социальные сети - &#42f5ad/links"
+      - "     &fПодписывайся! Там много интересного!"
+      - ""
+    click: "/links"
+    hover:
+      - "&7Нажми на сообщение;)"
+  converter:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fОбменивай валюты в обменнике - &#42f5ad/converter"
+      - ""
+    click: "/converter"
+    hover:
+      - "&7Нажми на сообщение;)"
+  trade:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fОбменивайся с игроками безопасным методом - &#42f5ad/trade"
+      - ""
+  dhide:
+    messages:
+      - ""
+      - " &#42f5ad☑ &fЗелье &#42f5adневидимости &fспрячет тебя на карте!"
+      - ""
