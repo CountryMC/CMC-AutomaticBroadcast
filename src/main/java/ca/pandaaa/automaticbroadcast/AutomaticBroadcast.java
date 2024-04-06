@@ -2,7 +2,6 @@ package ca.pandaaa.automaticbroadcast;
 
 import ca.pandaaa.automaticbroadcast.broadcast.Broadcast;
 import ca.pandaaa.automaticbroadcast.broadcast.BroadcastManager;
-import ca.pandaaa.automaticbroadcast.broadcast.BroadcastToggle;
 import ca.pandaaa.automaticbroadcast.commands.Commands;
 import ca.pandaaa.automaticbroadcast.commands.TabCompletion;
 import ca.pandaaa.automaticbroadcast.utils.ConfigManager;
@@ -33,7 +32,6 @@ public class AutomaticBroadcast extends JavaPlugin {
     private BroadcastManager broadcastManager;
     private BukkitTask automaticBroadcastTask;
     private List<Broadcast> broadcastList;
-    private BroadcastToggle broadcastToggle;
 
     // What should happen when the plugin enables //
     @Override
@@ -55,8 +53,6 @@ public class AutomaticBroadcast extends JavaPlugin {
 
         // Creates the command and sync the listener //
         getCommandsAndListeners();
-
-        broadcastToggle = new BroadcastToggle(configManager);
 
         // Starts the broadcasting //
         startBroadcasting();
@@ -129,7 +125,6 @@ public class AutomaticBroadcast extends JavaPlugin {
         // Replaces the commands and attributes //
         configManager = new ConfigManager(getConfig(), broadcastsConfig);
         broadcastManager = new BroadcastManager(createBroadcastList());
-        broadcastToggle = new BroadcastToggle(configManager);
         getCommandsAndListeners();
 
         // Sends the confirmation message to the command executor //
@@ -158,10 +153,5 @@ public class AutomaticBroadcast extends JavaPlugin {
     // Returns the list of broadcasts created on start //
     public List<Broadcast> getBroadcastList() {
         return broadcastList;
-    }
-
-    // Returns the toggle manager of the plugin //
-    public BroadcastToggle getBroadcastToggle() {
-        return broadcastToggle;
     }
 }

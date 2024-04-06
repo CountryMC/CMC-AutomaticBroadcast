@@ -39,13 +39,6 @@ public class Commands implements CommandExecutor {
                 case "list":
                     sendList(sender);
                     break;
-                // "toggle" will toggle the
-                case "toggle":
-                    if(args.length == 2)
-                        toggleBroadcast(sender, args[1]);
-                    else
-                        toggleBroadcast(sender, "Toggle");
-                    break;
                 // Anything else will send the error //
                 default:
                     sendUnknownCommandMessage(sender);
@@ -64,22 +57,6 @@ public class Commands implements CommandExecutor {
 
         // Reloads the configurations and sends the confirmation message //
         AutomaticBroadcast.getPlugin().reloadConfig(sender);
-    }
-
-    // Toggle the broadcasts //
-    public void toggleBroadcast(CommandSender sender, String type) {
-        if (!sender.hasPermission("automaticbroadcast.toggle") || !(sender instanceof Player)) {
-            sendNoPermissionMessage(sender);
-            return;
-        }
-
-        type = type.toLowerCase();
-
-        if(!type.equals("on") && !type.equals("off"))
-            type = "Toggle";
-
-        // Reloads the configurations and sends the confirmation message //
-        AutomaticBroadcast.getPlugin().getBroadcastToggle().togglePlayerBroadcast(((Player) sender), type);
     }
 
     // Sends all the broadcast to the sender of the command //

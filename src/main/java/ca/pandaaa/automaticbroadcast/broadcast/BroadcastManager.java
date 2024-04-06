@@ -98,7 +98,6 @@ public class BroadcastManager implements Listener {
             players = players.stream().filter(player -> !configManager.getExemptedPlayers().contains(player.getName())).collect(Collectors.toList());
         if (configManager.getExemptPermission())
             players = players.stream().filter(player -> !player.hasPermission("automaticbroadcast.exempt")).collect(Collectors.toList());
-        players = players.stream().filter(player -> plugin.getBroadcastToggle().isBroadcastToggledOn(player)).collect(Collectors.toList());
         return players;
     }
 

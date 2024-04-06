@@ -19,14 +19,6 @@ public class TabCompletion implements TabCompleter {
                 completionList.add("reload");
             }
         }
-        if(sender.hasPermission("automaticbroadcast.toggle")) {
-            if(args.length == 1)
-                completionList.add("toggle");
-            if(args.length == 2) {
-                completionList.add("on");
-                completionList.add("off");
-            }
-        }
         return completionList;
     }
 }
